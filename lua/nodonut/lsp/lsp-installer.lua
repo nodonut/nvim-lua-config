@@ -3,21 +3,12 @@ if not status_ok then
     return
 end
 
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-        on_attach = require("nodonut.lsp.handlers").on_attach,
-        capabilities = require("nodonut.lsp.handlers").capabilities,
-    }
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+    return
+end
 
-    if server.name == "sumneko_lua" then
-        local sumneko_opts = require("nodonut.lsp.settings.sumneko_lua")
-        opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-    end
+lsp_installer.setup {}
 
-    if server.name == "jsonls" then
-        local jsonls_opts = require("nodonut.lsp.settings.jsonls")
-        opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-    end
-
-    server:setup(opts)
-end)
+lspconfig.sumneko_lua.setup {}
+lspconfig.tsserver.setup {}
