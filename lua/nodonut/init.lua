@@ -1,0 +1,8 @@
+require("nodonut.set")
+require("nodonut.packer")
+require("nodonut.colorscheme")
+require("nodonut.lsp")
+require("nodonut.cmp")
+require("nodonut.treesitter")
+require("nodonut.keymaps")
+require("nodonut.telescope")
