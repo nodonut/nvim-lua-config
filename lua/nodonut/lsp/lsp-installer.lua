@@ -15,8 +15,10 @@ local function config(_config)
 	}, _config or {})
 end
 
-lsp_installer.setup {}
+local sumneko_opts = require("nodonut.lsp.settings.sumneko_lua")
+local jsonls_opts = require("nodonut.lsp.settings.jsonls")
 
-local sumneko_lua_opts = require("nodonut.lsp.settings.sumneko_lua")
-lspconfig.sumneko_lua.setup(sumneko_lua_opts)
+lsp_installer.setup {}
+lspconfig.sumneko_lua.setup(config(sumneko_opts))
+lspconfig.jsonls.setup(config(jsonls_opts))
 lspconfig.tsserver.setup(config())
