@@ -1,6 +1,7 @@
 return require("packer").startup(function()
     use("wbthomason/packer.nvim")
     use("sbdchd/neoformat")
+    use("jose-elias-alvarez/null-ls.nvim")
 
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
@@ -27,13 +28,14 @@ return require("packer").startup(function()
 
     use("nvim-treesitter/playground")
     use("romgrk/nvim-treesitter-context")
+    use("ryanoasis/vim-devicons")
 
     use("vim-airline/vim-airline")
     use("preservim/nerdtree")
     use("williamboman/nvim-lsp-installer")
     use("tpope/vim-surround")
     use {
-	    "windwp/nvim-autopairs",
+        "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
 

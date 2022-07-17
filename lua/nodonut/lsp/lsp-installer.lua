@@ -9,10 +9,10 @@ if not status_ok then
 end
 
 local function config(_config)
-	return vim.tbl_deep_extend("force", {
+    return vim.tbl_deep_extend("force", {
         capabilities = require("nodonut.lsp.handlers").capabilities,
-		on_attach = require("nodonut.lsp.handlers").on_attach,
-	}, _config or {})
+        on_attach = require("nodonut.lsp.handlers").on_attach,
+    }, _config or {})
 end
 
 local sumneko_opts = require("nodonut.lsp.settings.sumneko_lua")
@@ -20,5 +20,6 @@ local jsonls_opts = require("nodonut.lsp.settings.jsonls")
 
 lsp_installer.setup {}
 lspconfig.sumneko_lua.setup(config(sumneko_opts))
+lspconfig.vimls.setup(config())
 lspconfig.jsonls.setup(config(jsonls_opts))
 lspconfig.tsserver.setup(config())
