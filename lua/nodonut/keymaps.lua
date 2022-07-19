@@ -10,3 +10,7 @@ vim.g.maplocalleader = " "
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>ga", "<cmd>lua require'nodonut.telescope'.git_branches()<cr>", opts)
+
+-- NvimTree keymaps
+keymap("n", "<leader>nf", "<cmd>NvimTreeFindFile<cr>", opts)
+keymap("n", "<leader>nt", "<cmd>NvimTreeToggle<cr>", opts)

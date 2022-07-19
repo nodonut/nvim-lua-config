@@ -2,6 +2,7 @@ return require("packer").startup(function()
     use("wbthomason/packer.nvim")
     use("sbdchd/neoformat")
     use("jose-elias-alvarez/null-ls.nvim")
+    use("lukas-reineke/indent-blankline.nvim")
 
     use("nvim-lua/plenary.nvim")
     use("nvim-lua/popup.nvim")
@@ -31,12 +32,18 @@ return require("packer").startup(function()
     use("ryanoasis/vim-devicons")
 
     use("vim-airline/vim-airline")
-    use("preservim/nerdtree")
+    -- use("preservim/nerdtree")
     use("williamboman/nvim-lsp-installer")
     use("tpope/vim-surround")
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
-
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
 end)
