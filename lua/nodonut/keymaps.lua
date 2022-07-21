@@ -18,3 +18,7 @@ keymap("n", "<leader>nt", "<cmd>NvimTreeToggle<cr>", opts)
 
 -- Vim Test keymaps
 keymap("n", "<leader>T", "<cmd>TestFile<cr>", opts)
+
+
+-- Git Fugitive keymaps
+keymap("n", "<leader>gb", "<cmd>Git blame<cr>", opts)
