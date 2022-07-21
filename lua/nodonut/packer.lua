@@ -46,4 +46,5 @@ return require("packer").startup(function()
         },
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
+    use("vim-test/vim-test")
 end)
