@@ -48,4 +48,5 @@ return require("packer").startup(function()
     }
     use("vim-test/vim-test")
     use("tpope/vim-fugitive")
+    use("folke/tokyonight.nvim")
 end)

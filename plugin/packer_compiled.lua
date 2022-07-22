@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
   ["lsp_extensions.nvim"] = {
     loaded = true,
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim",
@@ -145,6 +150,11 @@ _G.packer_plugins = {
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -154,6 +164,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/romgrk/nvim-treesitter-context"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -190,6 +205,11 @@ _G.packer_plugins = {
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
+  },
   ["vim-airline"] = {
     loaded = true,
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/vim-airline",
@@ -200,10 +220,20 @@ _G.packer_plugins = {
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/vim-devicons",
     url = "https://github.com/ryanoasis/vim-devicons"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-test"] = {
+    loaded = true,
+    path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
   }
 }
 
