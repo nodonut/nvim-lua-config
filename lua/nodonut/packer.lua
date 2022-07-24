@@ -1,7 +1,7 @@
 return require("packer").startup(function()
     use("wbthomason/packer.nvim")
     use("sbdchd/neoformat")
-    use("jose-elias-alvarez/null-ls.nvim")
+
     use("lukas-reineke/indent-blankline.nvim")
 
     use("nvim-lua/plenary.nvim")

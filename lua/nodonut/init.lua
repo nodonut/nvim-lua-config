@@ -10,13 +10,20 @@ require("nodonut.autopairs")
 require("nodonut.nvim-tree")
 
 local augroup = vim.api.nvim_create_augroup
-NodonutGroup = augroup('nodonut', {})
+NodonutGroup = augroup("nodonut", {})
 local autocmd = vim.api.nvim_create_autocmd
 
 autocmd({ "BufEnter", "BufWinEnter", "TabEnter" }, {
-    group = NodonutGroup,
-    pattern = "*.rs",
-    callback = function()
-        require("lsp_extensions").inlay_hints {}
-    end
+	group = NodonutGroup,
+	pattern = "*.rs",
+	callback = function()
+		require("lsp_extensions").inlay_hints({})
+	end,
 })
+
+vim.cmd([[
+    augroup fmt
+    autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
+    augroup END
+]])
