@@ -1,1 +1,2 @@
-require("nodonut.lsp.lsp-installer")
+require("nodonut.lsp.mason")
+require("nodonut.lsp.null-ls")

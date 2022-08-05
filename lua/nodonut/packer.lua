@@ -1,6 +1,6 @@
 return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
-	use("sbdchd/neoformat")
+	-- use("sbdchd/neoformat")
 
 	use("lukas-reineke/indent-blankline.nvim")
 
@@ -32,7 +32,9 @@ return require("packer").startup(function()
 	use("ryanoasis/vim-devicons")
 
 	use("vim-airline/vim-airline")
-	use("williamboman/nvim-lsp-installer")
+	-- use("williamboman/nvim-lsp-installer")
+	use({ "williamboman/mason.nvim" })
+	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use("tpope/vim-surround")
 	use({
 		"windwp/nvim-autopairs",
