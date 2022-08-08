@@ -25,11 +25,9 @@ null_ls.setup({
 		-- Formatters
 		formatting.stylua,
 		formatting.prettier,
-		formatting.rubocop,
 
 		-- Diagnostics
 		diagnostics.stylint,
 		diagnostics.eslint,
-		diagnostics.rubocop,
 	},
 })
