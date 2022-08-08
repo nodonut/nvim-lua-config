@@ -32,6 +32,7 @@ lspconfig.dockerls.setup(config())
 lspconfig.emmet_ls.setup(config())
 lspconfig.gopls.setup(config())
 lspconfig.yamlls.setup(config())
+lspconfig.rust_analyzer.setup(config())
 
 lspconfig.solargraph.setup(config({
 	cmd = { "/Users/apoorvsohal/.rbenv/shims/solargraph", "stdio" },
