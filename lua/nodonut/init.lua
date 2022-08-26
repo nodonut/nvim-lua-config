@@ -8,6 +8,8 @@ require("nodonut.keymaps")
 require("nodonut.telescope")
 require("nodonut.autopairs")
 require("nodonut.nvim-tree")
+require("nodonut.gitsigns")
+require("nodonut.lualine")
 
 local augroup = vim.api.nvim_create_augroup
 NodonutGroup = augroup("nodonut", {})

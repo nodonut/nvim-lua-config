@@ -24,7 +24,7 @@ mason.setup({})
 lspconfig.sumneko_lua.setup(config(sumneko_opts))
 lspconfig.jsonls.setup(config(jsonls_opts))
 lspconfig.tsserver.setup(config())
-lspconfig.eslint.setup(config())
+-- lspconfig.eslint.setup(config())
 lspconfig.rubocop.setup(config())
 lspconfig.cssmodules_ls.setup(config())
 lspconfig.cssls.setup(config())
@@ -41,7 +41,6 @@ lspconfig.solargraph.setup(config({
 			diagnostics = true,
 		},
 	},
-	init_options = { formatting = true },
 	filetypes = { "ruby" },
 	root_dir = util.root_pattern("Gemfile", ".git"),
 }))

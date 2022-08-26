@@ -6,6 +6,11 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Quickfix List keymaps
+keymap("n", "<leader>cn", "<cmd>cnext<cr>", opts)
+keymap("n", "<leader>cp", "<cmd>cprev<cr>", opts)
+keymap("n", "<leader>co", "<cmd>copen<cr>", opts)
+
 -- Telescope keymaps
 keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)

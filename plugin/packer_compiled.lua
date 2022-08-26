@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   gruvbox = {
     loaded = true,
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/gruvbox",
@@ -209,11 +214,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
-  },
-  ["vim-airline"] = {
-    loaded = true,
-    path = "/Users/apoorvsohal/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
   },
   ["vim-devicons"] = {
     loaded = true,

@@ -24,10 +24,12 @@ null_ls.setup({
 	sources = {
 		-- Formatters
 		formatting.stylua,
-		formatting.prettier,
+		formatting.prettierd,
+		formatting.rubocop,
 
 		-- Diagnostics
 		diagnostics.stylint,
 		diagnostics.eslint,
+		diagnostics.rubocop,
 	},
 })

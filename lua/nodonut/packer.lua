@@ -31,8 +31,6 @@ return require("packer").startup(function()
 	use("romgrk/nvim-treesitter-context")
 	use("ryanoasis/vim-devicons")
 
-	use("vim-airline/vim-airline")
-	-- use("williamboman/nvim-lsp-installer")
 	use({ "williamboman/mason.nvim" })
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use("tpope/vim-surround")
@@ -53,5 +51,13 @@ return require("packer").startup(function()
 	use("tpope/vim-fugitive")
 	use("folke/tokyonight.nvim")
 	use("tpope/vim-rails")
+	use({
+		"lewis6991/gitsigns.nvim",
+		tag = "release", -- To use the latest release
+	})
 	use("numToStr/Comment.nvim")
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 end)
