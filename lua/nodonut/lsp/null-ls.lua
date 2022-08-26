@@ -28,7 +28,7 @@ null_ls.setup({
 		formatting.rubocop,
 
 		-- Diagnostics
-		diagnostics.stylint,
+		diagnostics.stylelint,
 		diagnostics.eslint,
 		diagnostics.rubocop,
 	},
