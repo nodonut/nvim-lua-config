@@ -235,11 +235,6 @@ _G.packer_plugins = {
     path = "/home/nodonut/.local/share/nvim/site/pack/packer/start/vim-rails",
     url = "https://github.com/tpope/vim-rails"
   },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "/home/nodonut/.local/share/nvim/site/pack/packer/start/vim-surround",
-    url = "https://github.com/tpope/vim-surround"
-  },
   ["vim-test"] = {
     loaded = true,
     path = "/home/nodonut/.local/share/nvim/site/pack/packer/start/vim-test",

@@ -31,9 +31,12 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end
 
-	if client.name == "sumneko_lua" then
-		client.resolved_capabilities.document_formatting = false
-	end
+    if client.server_capabilities.documentFormattingProvider then
+        vim.api.nvim_command [[augroup Format]]
+        vim.api.nvim_command [[autocmd! * <buffer>]]
+        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+        vim.api.nvim_command [[augroup end]]
+    end
 
 	if client.name == "solargraph" then
 		client.resolved_capabilities.document_formatting = false

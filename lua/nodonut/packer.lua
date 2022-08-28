@@ -1,9 +1,6 @@
 return require("packer").startup(function()
 	use("wbthomason/packer.nvim")
-	-- use("sbdchd/neoformat")
-
 	use("lukas-reineke/indent-blankline.nvim")
-
 	use("nvim-lua/plenary.nvim")
 	use("nvim-lua/popup.nvim")
 	use("nvim-telescope/telescope.nvim")
@@ -30,16 +27,15 @@ return require("packer").startup(function()
 	use("nvim-treesitter/playground")
 	use("romgrk/nvim-treesitter-context")
 	use("ryanoasis/vim-devicons")
-
 	use({ "williamboman/mason.nvim" })
 	use({ "jose-elias-alvarez/null-ls.nvim" })
-	use("tpope/vim-surround")
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
 	})
+	use("windwp/nvim-ts-autotag")
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
