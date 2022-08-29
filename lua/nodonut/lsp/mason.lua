@@ -1,20 +1,16 @@
 local util = require("lspconfig.util")
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-	return
-end
+if (not lspconfig_status_ok) then return end
 
 local status_ok, mason = pcall(require, "mason")
-if not status_ok then
-	return
-end
+if (not status_ok) then return end
 
 local function config(_config)
-	return vim.tbl_deep_extend("force", {
-		capabilities = require("nodonut.lsp.handlers").capabilities,
-		on_attach = require("nodonut.lsp.handlers").on_attach,
-	}, _config or {})
+    return vim.tbl_deep_extend("force", {
+        capabilities = require("nodonut.lsp.handlers").capabilities,
+        on_attach = require("nodonut.lsp.handlers").on_attach,
+    }, _config or {})
 end
 
 local sumneko_opts = require("nodonut.lsp.settings.sumneko_lua")
@@ -36,12 +32,12 @@ lspconfig.rust_analyzer.setup(config())
 lspconfig.html.setup(config())
 
 lspconfig.solargraph.setup(config({
-	cmd = { "/Users/apoorvsohal/.rbenv/shims/solargraph", "stdio" },
-	settings = {
-		solargraph = {
-			diagnostics = true,
-		},
-	},
-	filetypes = { "ruby" },
-	root_dir = util.root_pattern("Gemfile", ".git"),
+    cmd = { "/Users/apoorvsohal/.rbenv/shims/solargraph", "stdio" },
+    settings = {
+        solargraph = {
+            diagnostics = true,
+        },
+    },
+    filetypes = { "ruby" },
+    root_dir = util.root_pattern("Gemfile", ".git"),
 }))
