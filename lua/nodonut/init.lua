@@ -2,9 +2,6 @@ require("nodonut.set")
 require("nodonut.packer")
 require("nodonut.lsp")
 require("nodonut.keymaps")
-require("nodonut.telescope")
-require("nodonut.nvim-tree")
-require("nodonut.gitsigns")
 
 local augroup = vim.api.nvim_create_augroup
 NodonutGroup = augroup("nodonut", {})

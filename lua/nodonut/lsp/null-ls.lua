@@ -34,9 +34,11 @@ null_ls.setup({
         -- Formatters
         formatting.prettierd,
         formatting.rubocop.with({ condition = has_rubocop_configured }),
+        formatting.shellharden,
 
         -- Diagnostics
         diagnostics.stylelint,
+        diagnostics.shellcheck,
         diagnostics.eslint.with({ condition = has_eslint_configured }),
         diagnostics.rubocop.with({ condition = has_rubocop_configured }),
     },

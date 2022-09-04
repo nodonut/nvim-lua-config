@@ -30,6 +30,7 @@ lspconfig.gopls.setup(config())
 lspconfig.yamlls.setup(config())
 lspconfig.rust_analyzer.setup(config())
 lspconfig.html.setup(config())
+lspconfig.bashls.setup(config())
 
 lspconfig.solargraph.setup(config({
     cmd = { "/Users/apoorvsohal/.rbenv/shims/solargraph", "stdio" },
