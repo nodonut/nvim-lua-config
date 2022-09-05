@@ -18,8 +18,6 @@ return require("packer").startup(function()
     use("saadparwaiz1/cmp_luasnip")
     use("rafamadriz/friendly-snippets")
 
-    use("gruvbox-community/gruvbox")
-
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate",
     })
@@ -46,7 +44,6 @@ return require("packer").startup(function()
     use("vim-test/vim-test")
     use("tpope/vim-fugitive")
     use("folke/tokyonight.nvim")
-    use("tpope/vim-rails")
     use({
         "lewis6991/gitsigns.nvim",
         tag = "release", -- To use the latest release
