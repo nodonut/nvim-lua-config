@@ -16,7 +16,8 @@ keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "<leader>fm", "<cmd>Telescope man_pages<cr>", opts)
-keymap("n", "<leader>ga", "<cmd>lua require'nodonut.telescope'.git_branches()<cr>", opts)
+keymap("n", "<leader>ga", "<cmd>Telescope git_branches<cr>", opts)
+keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 
 -- NvimTree keymaps
 keymap("n", "<leader>nf", "<cmd>NvimTreeFindFile<cr>", opts)
