@@ -45,7 +45,10 @@ return require("packer").startup(function()
     })
     use("vim-test/vim-test")
     use("tpope/vim-fugitive")
-    use("folke/tokyonight.nvim")
+    use({
+        "folke/tokyonight.nvim",
+        commit = "e1cb2068a8118bcf4b2b0ad81b87dbebcc3eee3b"
+    })
     use("tpope/vim-rails")
     use({
         "lewis6991/gitsigns.nvim",

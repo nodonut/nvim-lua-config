@@ -16,6 +16,10 @@ local function has_rubocop_configured()
     return utils.root_has_file(".rubocop.yml")
 end
 
+local diagnostics_config = {
+    diagnostics_format = "[#{c}] #{m} [#{s}]"
+}
+
 null_ls.setup({
     on_attach = function(client, bufnr)
         if client.server_capabilities.documentFormattingProvider then
@@ -32,14 +36,14 @@ null_ls.setup({
     end,
     sources = {
         -- Formatters
-        formatting.prettierd,
+        formatting.prettier.with({ prefer_local = "node_modules/.bin" }),
         formatting.rubocop.with({ condition = has_rubocop_configured }),
         formatting.shellharden,
 
         -- Diagnostics
-        diagnostics.stylelint,
-        diagnostics.shellcheck,
-        diagnostics.eslint.with({ condition = has_eslint_configured }),
-        diagnostics.rubocop.with({ condition = has_rubocop_configured }),
+        diagnostics.stylelint.with(diagnostics_config),
+        diagnostics.shellcheck.with(diagnostics_config),
+        diagnostics.eslint.with({ condition = has_eslint_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
+        diagnostics.rubocop.with({ condition = has_rubocop_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
     },
 })
