@@ -1,7 +1,12 @@
 vim.g.tokyonight_transparent_sidebar = true
 vim.g.tokyonight_transparent = true
+vim.g.catppuccin_flavour = "macchiato"
 
-local colorscheme = "tokyonight"
+require("catppuccin").setup {
+    transparent_background = true
+}
+
+local colorscheme = "catppuccin"
 local hl = function(thing, opts)
     vim.api.nvim_set_hl(0, thing, opts)
 end
