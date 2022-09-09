@@ -59,4 +59,7 @@ return require("packer").startup(function()
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
+
+    -- Themes
+    use('navarasu/onedark.nvim')
 end)

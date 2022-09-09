@@ -7,7 +7,7 @@ ts.setup {
         disable = {},
     },
     indent = { enable = true, disable = {} },
-    ensure_installed = { "tsx", "lua", "rust", "go", "css", "json", "typescript", "javascript" },
+    ensure_installed = { "tsx", "lua", "rust", "go", "css", "json", "typescript", "javascript", "scss" },
     autotag = {
         enabled = true,
     }

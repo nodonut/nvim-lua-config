@@ -17,7 +17,8 @@ local function has_rubocop_configured()
 end
 
 local diagnostics_config = {
-    diagnostics_format = "[#{c}] #{m} [#{s}]"
+    diagnostics_format = "[#{c}] #{m} [#{s}]",
+    prefer_local = "node_modules/.bin"
 }
 
 null_ls.setup({
