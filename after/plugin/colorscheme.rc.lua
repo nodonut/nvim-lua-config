@@ -1,6 +1,6 @@
 vim.g.tokyonight_transparent_sidebar = true
 vim.g.tokyonight_transparent = true
-vim.g.catppuccin_flavour = "macchiato"
+vim.g.catppuccin_flavour = "mocha"
 
 require("catppuccin").setup {
     transparent_background = true
