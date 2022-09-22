@@ -28,3 +28,7 @@ keymap("n", "<leader>T", "<cmd>TestFile<cr>", opts)
 
 -- Git Fugitive keymaps
 keymap("n", "<leader>gb", "<cmd>Git blame<cr>", opts)
+
+
+-- UndoTree keymaps
+keymap('n', "<leader>u", "<cmd>UndotreeToggle<cr>", opts)

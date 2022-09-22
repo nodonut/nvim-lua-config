@@ -6,6 +6,7 @@ local utils = require("null-ls.utils").make_conditional_utils()
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
+local code_actions = null_ls.builtins.code_actions
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local function has_eslint_configured()
@@ -37,14 +38,17 @@ null_ls.setup({
     end,
     sources = {
         -- Formatters
-        formatting.prettier.with({ prefer_local = "node_modules/.bin" }),
+        -- formatting.prettier.with({ prefer_local = "node_modules/.bin" }),
         formatting.rubocop.with({ condition = has_rubocop_configured }),
         formatting.shellharden,
 
         -- Diagnostics
+        diagnostics.eslint_d.with({ diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.stylelint.with(diagnostics_config),
         diagnostics.shellcheck.with(diagnostics_config),
-        diagnostics.eslint.with({ condition = has_eslint_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.rubocop.with({ condition = has_rubocop_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
+
+        -- Code Actions
+        code_actions.eslint_d
     },
 })

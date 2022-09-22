@@ -28,6 +28,11 @@ M.on_attach = function(client, bufnr)
         client.resolved_capabilities.document_formatting = false
     end
 
+    if client.name == "jsonls" then
+        client.resolved_capabilities.document_formatting = false
+    end
+
+
     if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_command [[augroup Format]]
         vim.api.nvim_command [[autocmd! * <buffer>]]
