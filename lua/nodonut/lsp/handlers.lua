@@ -18,26 +18,21 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    -- vim.notify(client.name .. " starting...")
-    -- TODO: refactor this into a method that checks if string in list
-    if client.name == "tsserver" then
-        client.resolved_capabilities.document_formatting = false
+    local format_filters = function()
+        return client.name ~= "tsserver" or client.name ~= "solargraph" or client.name ~= "jsonls"
     end
 
-    if client.name == "solargraph" then
-        client.resolved_capabilities.document_formatting = false
-    end
-
-    if client.name == "jsonls" then
-        client.resolved_capabilities.document_formatting = false
-    end
-
+    local format_augroup = vim.api.nvim_create_augroup('Format', { clear = true })
 
     if client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_command [[augroup Format]]
-        vim.api.nvim_command [[autocmd! * <buffer>]]
-        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-        vim.api.nvim_command [[augroup end]]
+        vim.api.nvim_clear_autocmds({ group = format_augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = format_augroup,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({ filters = format_filters })
+            end
+        })
     end
 
     lsp_keymaps(bufnr)

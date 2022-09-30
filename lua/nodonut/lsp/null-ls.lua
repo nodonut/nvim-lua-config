@@ -7,7 +7,6 @@ local utils = require("null-ls.utils").make_conditional_utils()
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local function has_eslint_configured()
     return utils.root_has_file(".eslintrc.js") or utils.root_has_file(".eslintrc.json")
@@ -23,19 +22,6 @@ local diagnostics_config = {
 }
 
 null_ls.setup({
-    on_attach = function(client, bufnr)
-        if client.server_capabilities.documentFormattingProvider then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                    vim.lsp.buf.formatting_sync()
-                end,
-            })
-        end
-    end,
     sources = {
         -- Formatters
         -- formatting.prettier.with({ prefer_local = "node_modules/.bin" }),
