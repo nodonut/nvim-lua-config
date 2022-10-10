@@ -1,4 +1,4 @@
-local util = require("lspconfig.util")
+-- local util = require("lspconfig.util")
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if (not lspconfig_status_ok) then return end
@@ -31,14 +31,17 @@ lspconfig.rust_analyzer.setup(config())
 lspconfig.html.setup(config())
 lspconfig.bashls.setup(config())
 lspconfig.intelephense.setup(config())
-
-lspconfig.solargraph.setup(config({
-    cmd = { "/Users/apoorvsohal/.rbenv/shims/solargraph", "stdio" },
-    settings = {
-        solargraph = {
-            diagnostics = true,
-        },
-    },
-    filetypes = { "ruby" },
-    root_dir = util.root_pattern("Gemfile", ".git"),
+lspconfig.sorbet.setup(config({
+    cmd = { 'bundle', 'exec', 'srb', 'tc', '--lsp' }
 }))
+
+-- lspconfig.solargraph.setup(config({
+--     cmd = { "/Users/apoorvsohal/.rbenv/shims/solargraph", "stdio" },
+--     settings = {
+--         solargraph = {
+--             diagnostics = true,
+--         },
+--     },
+--     filetypes = { "ruby" },
+--     root_dir = util.root_pattern("Gemfile", ".git"),
+-- }))
