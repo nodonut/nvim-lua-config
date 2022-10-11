@@ -29,7 +29,7 @@ null_ls.setup({
         formatting.shellharden,
 
         -- Diagnostics
-        diagnostics.eslint_d.with({ diagnostics_format = "[#{c}] #{m} [#{s}]" }),
+        diagnostics.eslint_d.with({ condition = has_eslint_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.stylelint.with(diagnostics_config),
         diagnostics.shellcheck.with(diagnostics_config),
         diagnostics.rubocop.with({ condition = has_rubocop_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),

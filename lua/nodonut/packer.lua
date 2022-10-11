@@ -46,10 +46,10 @@ return require("packer").startup(function()
     use("vim-test/vim-test")
     use("tpope/vim-fugitive")
     use("tpope/vim-rails")
-    use({
-        "lewis6991/gitsigns.nvim",
-        tag = "release", -- To use the latest release
-    })
+    -- use({
+    --     "lewis6991/gitsigns.nvim",
+    --     tag = "release", -- To use the latest release
+    -- })
     use("numToStr/Comment.nvim")
     use({
         "nvim-lualine/lualine.nvim",

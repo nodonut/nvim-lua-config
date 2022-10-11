@@ -17,11 +17,11 @@ local function lsp_keymaps(bufnr)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
 end
 
-M.on_attach = function(client, bufnr)
-    local format_filters = function()
-        return client.name ~= "tsserver" or client.name ~= "solargraph" or client.name ~= "jsonls"
-    end
+local format_filters = function(client)
+    return client.name ~= "tsserver" and client.name ~= "solargraph" and client.name ~= "jsonls"
+end
 
+M.on_attach = function(client, bufnr)
     local format_augroup = vim.api.nvim_create_augroup('Format', { clear = true })
 
     if client.server_capabilities.documentFormattingProvider then
@@ -30,7 +30,7 @@ M.on_attach = function(client, bufnr)
             group = format_augroup,
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format({ filters = format_filters })
+                vim.lsp.buf.format({ filter = format_filters })
             end
         })
     end
