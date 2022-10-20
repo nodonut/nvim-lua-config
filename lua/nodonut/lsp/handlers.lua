@@ -11,18 +11,26 @@ local function lsp_keymaps(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', opts)
+    vim.api.nvim_buf_set_keymap(
+        bufnr,
+        "n",
+        "gl",
+        '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
+        opts
+    )
     vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]])
 end
 
-local format_filters = function(client)
-    return client.name ~= "tsserver" and client.name ~= "solargraph" and client.name ~= "jsonls"
-end
+local deny_list = {
+    tsserver = true,
+    jsonls = true,
+    solargraph = true,
+}
 
+local format_augroup = vim.api.nvim_create_augroup("Format", { clear = false })
 M.on_attach = function(client, bufnr)
-    local format_augroup = vim.api.nvim_create_augroup('Format', { clear = true })
 
     if client.server_capabilities.documentFormattingProvider then
         vim.api.nvim_clear_autocmds({ group = format_augroup, buffer = bufnr })
@@ -30,21 +38,22 @@ M.on_attach = function(client, bufnr)
             group = format_augroup,
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format({ filter = format_filters })
-            end
+                vim.lsp.buf.format({ filter = function(filter_client) return not deny_list[filter_client.name]
+                end,
+                    bufnr = bufnr
+                })
+            end,
         })
     end
 
     lsp_keymaps(bufnr)
 end
 
-local vim_capabilities = vim.lsp.protocol.make_client_capabilities()
-
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
     return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(vim_capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities()
 
 return M

@@ -19,16 +19,14 @@ keymap("n", "<leader>fm", "<cmd>Telescope man_pages<cr>", opts)
 keymap("n", "<leader>ga", "<cmd>Telescope git_branches<cr>", opts)
 keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 
--- NvimTree keymaps
-keymap("n", "<leader>nf", "<cmd>NvimTreeFindFile<cr>", opts)
-keymap("n", "<leader>nt", "<cmd>NvimTreeToggle<cr>", opts)
-
 -- Vim Test keymaps
 keymap("n", "<leader>T", "<cmd>TestFile<cr>", opts)
 
 -- Git Fugitive keymaps
 keymap("n", "<leader>gb", "<cmd>Git blame<cr>", opts)
 
-
 -- UndoTree keymaps
-keymap('n', "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
+keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
+
+-- Copy Relative Path
+keymap("n", "<leader>rl", '<cmd>let @+ = expand("%")<cr>', opts)

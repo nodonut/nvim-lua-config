@@ -18,8 +18,10 @@ end
 
 local diagnostics_config = {
     diagnostics_format = "[#{c}] #{m} [#{s}]",
-    prefer_local = "node_modules/.bin"
+    prefer_local = "node_modules/.bin",
 }
+
+
 
 null_ls.setup({
     sources = {
@@ -35,6 +37,6 @@ null_ls.setup({
         diagnostics.rubocop.with({ condition = has_rubocop_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
 
         -- Code Actions
-        code_actions.eslint_d
+        code_actions.eslint_d,
     },
 })
