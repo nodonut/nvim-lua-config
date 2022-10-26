@@ -30,3 +30,6 @@ keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
 
 -- Copy Relative Path
 keymap("n", "<leader>rl", '<cmd>let @+ = expand("%")<cr>', opts)
+
+-- NvimTree keymaps
+keymap("n", "<leader>nf", '<cmd>NvimTreeFindFileToggle<cr>', opts)
