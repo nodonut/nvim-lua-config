@@ -21,8 +21,6 @@ local diagnostics_config = {
     prefer_local = "node_modules/.bin",
 }
 
-
-
 null_ls.setup({
     sources = {
         -- Formatters
