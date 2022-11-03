@@ -10,6 +10,11 @@ if not status_ok then
     return
 end
 
+local mason_lsp_config_status, mason_lsp_config = pcall(require, "mason-lspconfig")
+if not mason_lsp_config_status then
+    return
+end
+
 local function config(_config)
     return vim.tbl_deep_extend("force", {
         capabilities = require("nodonut.lsp.handlers").capabilities,
@@ -20,7 +25,9 @@ end
 local sumneko_opts = require("nodonut.lsp.settings.sumneko_lua")
 local jsonls_opts = require("nodonut.lsp.settings.jsonls")
 
-mason.setup({})
+mason.setup()
+mason_lsp_config.setup()
+
 lspconfig.sumneko_lua.setup(config(sumneko_opts))
 lspconfig.jsonls.setup(config(jsonls_opts))
 lspconfig.tsserver.setup(config())
