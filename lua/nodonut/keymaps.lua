@@ -33,3 +33,6 @@ keymap("n", "<leader>rl", '<cmd>let @+ = expand("%")<cr>', opts)
 
 -- NvimTree keymaps
 keymap("n", "<leader>nf", '<cmd>NvimTreeFindFileToggle<cr>', opts)
+
+-- Prettier keymaps
+keymap("n", "<leader>fo", '<cmd>Prettier<cr>', opts)
