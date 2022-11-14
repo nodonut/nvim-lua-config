@@ -27,6 +27,7 @@ null_ls.setup({
         -- formatting.prettier.with({ prefer_local = "node_modules/.bin" }),
         formatting.rubocop.with({ condition = has_rubocop_configured }),
         formatting.shellharden,
+        formatting.phpcsfixer,
 
         -- Diagnostics
         diagnostics.eslint_d.with({ condition = has_eslint_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),

@@ -6,6 +6,11 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Movements
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "n", "nzz", opts)
+
 -- Quickfix List keymaps
 keymap("n", "<leader>cn", "<cmd>cnext<cr>", opts)
 keymap("n", "<leader>cp", "<cmd>cprev<cr>", opts)
