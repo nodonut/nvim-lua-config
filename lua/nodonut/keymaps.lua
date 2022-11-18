@@ -26,6 +26,7 @@ keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
 
 -- Vim Test keymaps
 keymap("n", "<leader>T", "<cmd>TestFile<cr>", opts)
+keymap("n", "<leader>t", "<cmd>TestNearest<cr>", opts)
 
 -- Git Fugitive keymaps
 keymap("n", "<leader>gb", "<cmd>Git blame<cr>", opts)
