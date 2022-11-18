@@ -25,8 +25,20 @@ end
 local sumneko_opts = require("nodonut.lsp.settings.sumneko_lua")
 local jsonls_opts = require("nodonut.lsp.settings.jsonls")
 
-mason.setup()
-mason_lsp_config.setup()
+mason.setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    },
+
+    log_level = vim.log.levels.DEBUG
+})
+mason_lsp_config.setup({
+    ensure_installed = { "sumneko_lua", "tsserver", "jsonls" }
+})
 
 lspconfig.sumneko_lua.setup(config(sumneko_opts))
 lspconfig.jsonls.setup(config(jsonls_opts))
