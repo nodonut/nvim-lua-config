@@ -9,7 +9,9 @@ local diagnostics = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
 
 local function has_eslint_configured()
-    return utils.root_has_file(".eslintrc.js") or utils.root_has_file(".eslintrc.json")
+    return utils.root_has_file(".eslintrc.js") or utils.root_has_file(".eslintrc.json") or
+        utils.root_has_file(".eslintrc")
+
 end
 
 local function has_rubocop_configured()
