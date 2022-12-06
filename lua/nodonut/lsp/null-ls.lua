@@ -37,6 +37,7 @@ null_ls.setup({
         diagnostics.shellcheck.with(diagnostics_config),
         -- diagnostics.rubocop.with({ condition = has_rubocop_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.yamllint,
+        diagnostics.phpcs,
 
         -- Code Actions
         code_actions.eslint_d,
