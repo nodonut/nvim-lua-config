@@ -1,5 +1,4 @@
-local status, prettier = pcall(require, "prettier")
-if (not status) then return end
+local prettier = require("prettier")
 
 prettier.setup {
     bin = 'prettierd',
@@ -14,5 +13,8 @@ prettier.setup {
         "less",
         "markdown",
     },
-    config_precedence = 'prefer-file'
+    cli_options = {
+        -- https://prettier.io/docs/en/cli.html#--config-precedence
+        config_precedence = "prefer-file", -- or "cli-override" or "file-override"
+    },
 }

@@ -1,44 +1,52 @@
 local opts = { noremap = true, silent = true }
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = function(mode, keys, func)
+    vim.keymap.set(mode, keys, func, opts)
+end
 
-keymap("", "<Space>", "<Nop>", opts)
+keymap("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Movements
-keymap("n", "<C-u>", "<C-u>zz", opts)
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "n", "nzz", opts)
+keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "<C-d>", "<C-d>zz")
+keymap("n", "n", "nzz")
 
 -- Quickfix List keymaps
-keymap("n", "<leader>cn", "<cmd>cnext<cr>", opts)
-keymap("n", "<leader>cp", "<cmd>cprev<cr>", opts)
-keymap("n", "<leader>co", "<cmd>copen<cr>", opts)
+keymap("n", "<leader>cn", "<cmd>cnext<cr>")
+keymap("n", "<leader>cp", "<cmd>cprev<cr>")
+keymap("n", "<leader>co", "<cmd>copen<cr>")
 
 -- Telescope keymaps
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-keymap("n", "<leader>fm", "<cmd>Telescope man_pages<cr>", opts)
-keymap("n", "<leader>ga", "<cmd>Telescope git_branches<cr>", opts)
-keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
+keymap("n", "<leader>ht", "<cmd>Telescope help_tags<cr>")
+keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+keymap("n", "<leader>fm", "<cmd>Telescope man_pages<cr>")
+keymap("n", "<leader>ga", "<cmd>Telescope git_branches<cr>")
+keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>")
+keymap("n", "<leader>?", "<cmd>Telescope oldfiles<cr>")
+keymap('n', '<leader>/', function()
+    -- You can pass additional configuration to telescope to change theme, layout, etc.
+    require('telescope.builtin').current_buffer_fuzzy_find()
+end)
 
 -- Vim Test keymaps
-keymap("n", "<leader>T", "<cmd>TestFile<cr>", opts)
-keymap("n", "<leader>t", "<cmd>TestNearest<cr>", opts)
+keymap("n", "<leader>T", "<cmd>TestFile<cr>")
+keymap("n", "<leader>t", "<cmd>TestNearest<cr>")
 
 -- Git Fugitive keymaps
-keymap("n", "<leader>gb", "<cmd>Git blame<cr>", opts)
+keymap("n", "<leader>gb", "<cmd>Git blame<cr>")
 
 -- UndoTree keymaps
-keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
+keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
 
 -- Copy Relative Path
-keymap("n", "<leader>rl", '<cmd>let @+ = expand("%")<cr>', opts)
+keymap("n", "<leader>rl", '<cmd>let @+ = expand("%")<cr>')
 
 -- NvimTree keymaps
-keymap("n", "<leader>nf", '<cmd>NvimTreeFindFileToggle<cr>', opts)
+keymap("n", "<leader>nf", '<cmd>NvimTreeFindFileToggle<cr>')
 
 -- Prettier keymaps
-keymap("n", "<leader>fo", '<cmd>Prettier<cr>', opts)
+keymap("n", "<leader>fo", '<cmd>Prettier<cr>')

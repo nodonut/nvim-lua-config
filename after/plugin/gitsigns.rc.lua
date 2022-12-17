@@ -4,6 +4,13 @@ if not status_ok then
 end
 
 gsigns.setup({
+    signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+    },
     current_line_blame = true,
     on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
