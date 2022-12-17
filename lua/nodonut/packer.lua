@@ -29,12 +29,6 @@ return require("packer").startup(function()
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
     use({ "jose-elias-alvarez/null-ls.nvim" })
-    use({
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup({})
-        end,
-    })
     use("windwp/nvim-ts-autotag")
     use("kyazdani42/nvim-web-devicons")
     use({
