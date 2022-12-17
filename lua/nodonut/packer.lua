@@ -17,15 +17,15 @@ return require("packer").startup(function()
     use("saadparwaiz1/cmp_luasnip")
     use("rafamadriz/friendly-snippets")
 
-    use("gruvbox-community/gruvbox")
-
     use("nvim-treesitter/nvim-treesitter", {
         run = ":TSUpdate",
     })
 
     use("nvim-treesitter/playground")
     use("romgrk/nvim-treesitter-context")
+
     use("ryanoasis/vim-devicons")
+
     use("williamboman/mason.nvim")
     use("williamboman/mason-lspconfig.nvim")
     use({ "jose-elias-alvarez/null-ls.nvim" })
@@ -43,9 +43,11 @@ return require("packer").startup(function()
             "kyazdani42/nvim-web-devicons", -- optional, for file icons
         },
     })
+
     use("vim-test/vim-test")
     use("tpope/vim-fugitive")
     use("tpope/vim-rails")
+
     use({
         "lewis6991/gitsigns.nvim",
         tag = "release", -- To use the latest release
