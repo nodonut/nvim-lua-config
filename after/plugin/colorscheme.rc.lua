@@ -1,39 +1,14 @@
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_transparent = true
-vim.g.catppuccin_flavour = "mocha"
-
 require("catppuccin").setup {
+    flavour = "macchiato",
     transparent_background = true
 }
 
-local colorscheme = "catppuccin"
-local hl = function(thing, opts)
-    vim.api.nvim_set_hl(0, thing, opts)
+function ColorMyPencils(color)
+    color = color or "catppuccin"
+    vim.cmd.colorscheme(color)
+
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
-hl("SignColumn", {
-    bg = "none",
-})
-
-hl("ColorColumn", {
-    ctermbg = 0,
-    bg = "#555555",
-})
-
-hl("CursorLineNR", {
-    bg = "None"
-})
-
-hl("Normal", {
-    bg = "none"
-})
-
-hl("LineNr", {
-    fg = "#5eacd3"
-})
-
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-    vim.notify("colorscheme " .. colorscheme .. " failed")
-    return
-end
+ColorMyPencils()
