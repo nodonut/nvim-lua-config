@@ -10,16 +10,11 @@ return require("packer").startup(function(use)
         run = ":TSUpdate",
     })
     use("nvim-treesitter/playground")
-
     use("romgrk/nvim-treesitter-context")
-
     use("ryanoasis/vim-devicons")
-
     use({ "jose-elias-alvarez/null-ls.nvim" })
 
     use("windwp/nvim-ts-autotag")
-
-    use("kyazdani42/nvim-web-devicons")
 
     use({
         "kyazdani42/nvim-tree.lua",
