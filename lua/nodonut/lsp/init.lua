@@ -199,6 +199,8 @@ null_ls.setup({
         -- diagnostics.rubocop.with({ condition = has_rubocop_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.yamllint,
         diagnostics.phpcs,
+        diagnostics.golangci_lint,
+        diagnostics.checkmake,
 
         -- Code Actions
         code_actions.eslint_d,
