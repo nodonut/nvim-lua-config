@@ -41,8 +41,6 @@ lsp.ensure_installed({
     'rust_analyzer',
     'bashls',
     'tailwindcss',
-    'emmet_ls',
-    'intelephense'
 })
 
 local cmp = require('cmp')
