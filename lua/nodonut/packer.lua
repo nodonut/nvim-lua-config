@@ -70,4 +70,13 @@ return require("packer").startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+    use {
+        'Equilibris/nx.nvim',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+        },
+        config = function()
+            require("nx").setup {}
+        end
+    }
 end)

@@ -171,18 +171,19 @@ local diagnostics_config = {
 }
 local null_ls_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
-    on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = null_ls_augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = format_augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = bufnr })
-                end,
-            })
-        end
-    end,
+    -- on_attach = function(client, bufnr)
+    --     if client.supports_method("textDocument/formatting") then
+    --         vim.api.nvim_clear_autocmds({ group = null_ls_augroup, buffer = bufnr })
+    --         vim.api.nvim_create_autocmd("BufWritePre", {
+    --             group = format_augroup,
+    --             buffer = bufnr,
+    --             callback = function()
+    --                 vim.lsp.buf.format({ filter = function(filter_client) return not deny_list[filter_client.name]
+    --                 end, bufnr = bufnr })
+    --             end,
+    --         })
+    --     end
+    -- end,
     sources = {
         -- Formatters
         -- formatting.prettier.with({ prefer_local = "node_modules/.bin" }),
