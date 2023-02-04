@@ -139,8 +139,12 @@ lsp.on_attach(function(client, bufnr)
 
 end)
 
+-- LSP CONFIGURATIONS
 lsp.configure('jsonls', jsonls_opts)
 lsp.configure('sumneko_lua', sumneko_opts)
+lsp.configure('rust_analyzer', {
+    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+})
 
 lsp.setup()
 

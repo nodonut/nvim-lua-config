@@ -26,6 +26,7 @@ keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 keymap("n", "<leader>fm", "<cmd>Telescope man_pages<cr>")
 keymap("n", "<leader>ga", "<cmd>Telescope git_branches<cr>")
 keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>")
+keymap("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
 keymap("n", "<leader>?", "<cmd>Telescope oldfiles<cr>")
 keymap('n', '<leader>/', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
