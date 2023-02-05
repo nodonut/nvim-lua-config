@@ -145,6 +145,12 @@ lsp.configure('sumneko_lua', sumneko_opts)
 lsp.configure('rust_analyzer', {
     cmd = { "rustup", "run", "stable", "rust-analyzer" },
 })
+lsp.configure("tsserver", {
+    on_init = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = false
+    end
+})
 
 lsp.setup()
 
@@ -154,6 +160,7 @@ vim.diagnostic.config({
 
 local null_ls = require("null-ls")
 local utils = require("null-ls.utils").make_conditional_utils()
+local null_opts = lsp.build_options('null-ls', {})
 
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
@@ -173,21 +180,22 @@ local diagnostics_config = {
     diagnostics_format = "[#{c}] #{m} [#{s}]",
     prefer_local = "node_modules/.bin",
 }
-local null_ls_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
 null_ls.setup({
-    -- on_attach = function(client, bufnr)
-    --     if client.supports_method("textDocument/formatting") then
-    --         vim.api.nvim_clear_autocmds({ group = null_ls_augroup, buffer = bufnr })
-    --         vim.api.nvim_create_autocmd("BufWritePre", {
-    --             group = format_augroup,
-    --             buffer = bufnr,
-    --             callback = function()
-    --                 vim.lsp.buf.format({ filter = function(filter_client) return not deny_list[filter_client.name]
-    --                 end, bufnr = bufnr })
-    --             end,
-    --         })
-    --     end
-    -- end,
+    on_attach = function(client, bufnr)
+        null_opts.on_attach(client, bufnr)
+
+        local format_cmd = function(input)
+            vim.lsp.buf.format({
+                id = client.id,
+                timeout_ms = 5000,
+                async = input.bang
+            })
+        end
+
+        local bufcmd = vim.api.nvim_buf_create_user_command
+        bufcmd(bufnr, 'NullFormat', format_cmd, { bang = true, range = true, desc = 'Format using null-ls' })
+    end,
     sources = {
         -- Formatters
         -- formatting.prettier.with({ prefer_local = "node_modules/.bin" }),

@@ -6,6 +6,8 @@ end
 nvim_tree.setup({
     sort_by = "case_sensitive",
     view = {
+        number = true,
+        relativenumber = true,
         side = "right",
         adaptive_size = true,
         mappings = {
