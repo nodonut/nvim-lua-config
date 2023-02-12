@@ -32,7 +32,7 @@ local sumneko_opts = require("nodonut.lsp.settings.sumneko_lua")
 lsp.preset('recommended')
 lsp.ensure_installed({
     'tsserver',
-    'sumneko_lua',
+    'lua_ls',
     'cssls',
     'jsonls',
     'gopls',
@@ -141,7 +141,7 @@ end)
 
 -- LSP CONFIGURATIONS
 lsp.configure('jsonls', jsonls_opts)
-lsp.configure('sumneko_lua', sumneko_opts)
+lsp.configure('lua_ls', sumneko_opts)
 lsp.configure('rust_analyzer', {
     cmd = { "rustup", "run", "stable", "rust-analyzer" },
 })
