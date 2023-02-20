@@ -51,3 +51,7 @@ keymap("n", "<leader>nf", '<cmd>NvimTreeFindFileToggle<cr>')
 
 -- Prettier keymaps
 keymap("n", "<leader>fo", '<cmd>Prettier<cr>')
+
+-- Copilot keymaps
+keymap("n", "<leader>ce", '<cmd>Copilot enable<cr>')
+keymap("n", "<leader>cd", '<cmd>Copilot disable<cr>')
