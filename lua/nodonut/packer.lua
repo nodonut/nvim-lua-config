@@ -77,4 +77,13 @@ return require("packer").startup(function(use)
         },
     }
     use "fladson/vim-kitty"
+
+    -- Copilot
+    use {
+        "zbirenbaum/copilot.lua",
+    }
+    use {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+    }
 end)

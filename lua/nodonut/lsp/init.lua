@@ -4,6 +4,7 @@ local kind_icons = {
     Method = "m",
     Function = "",
     Constructor = "",
+    Copilot = "",
     Field = "",
     Variable = "",
     Class = "",
@@ -46,12 +47,12 @@ lsp.ensure_installed({
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
+        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(),
 })
 
 -- disable completion with tab
@@ -67,15 +68,25 @@ lsp.setup_nvim_cmp({
             -- Kind icons
             vim_item.kind = string.format('%s', kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
             vim_item.menu = ({
-                nvim_lsp = "[LSP]",
-                luasnip = "[Snippet]",
-                buffer = "[Buffer]",
-                path = "[Path]",
-            })[entry.source.name]
+                    copilot = "[Copilot]",
+                    nvim_lsp = "[LSP]",
+                    luasnip = "[Snippet]",
+                    buffer = "[Buffer]",
+                    path = "[Path]",
+                })[entry.source.name]
             return vim_item
         end,
     },
+    sources = {
+        -- Copilot Source
+        { name = "copilot",  group_index = 2 },
 
+        -- Other Sources
+        { name = 'path',     group_index = 2 },
+        { name = 'nvim_lsp', group_index = 2 },
+        { name = 'buffer',   group_index = 2, keyword_length = 3 },
+        { name = 'luasnip',  group_index = 2, keyword_length = 2 },
+    }
 })
 
 lsp.set_preferences({
@@ -113,8 +124,10 @@ lsp.on_attach(function(client, bufnr)
             group = format_augroup,
             buffer = bufnr,
             callback = function()
-                vim.lsp.buf.format({ filter = function(filter_client) return not deny_list[filter_client.name]
-                end,
+                vim.lsp.buf.format({
+                    filter = function(filter_client)
+                        return not deny_list[filter_client.name]
+                    end,
                     bufnr = bufnr
                 })
             end,
@@ -136,7 +149,6 @@ lsp.on_attach(function(client, bufnr)
     nmap("<leader>rn", vim.lsp.buf.rename)
     nmap("<C-h>", vim.lsp.buf.signature_help)
     nmap("<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>")
-
 end)
 
 -- LSP CONFIGURATIONS
@@ -169,7 +181,6 @@ local code_actions = null_ls.builtins.code_actions
 local function has_eslint_configured()
     return utils.root_has_file(".eslintrc.js") or utils.root_has_file(".eslintrc.json") or
         utils.root_has_file(".eslintrc")
-
 end
 
 local function has_rubocop_configured()
