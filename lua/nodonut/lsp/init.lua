@@ -45,6 +45,7 @@ lsp.ensure_installed({
 })
 
 local cmp = require('cmp')
+
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -66,7 +67,7 @@ lsp.setup_nvim_cmp({
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
             -- Kind icons
-            vim_item.kind = string.format('%s', kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
+            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
             vim_item.menu = ({
                     copilot = "[Copilot]",
                     nvim_lsp = "[LSP]",
@@ -165,6 +166,11 @@ lsp.configure("tsserver", {
 })
 
 lsp.setup()
+
+local cmp_config = lsp.defaults.cmp_config()
+
+cmp_config.window.completion = cmp.config.window.bordered()
+cmp.setup(cmp_config)
 
 vim.diagnostic.config({
     virtual_text = true,
