@@ -79,9 +79,6 @@ lsp.setup_nvim_cmp({
         end,
     },
     sources = {
-        -- Copilot Source
-        { name = "copilot",  group_index = 2 },
-
         -- Other Sources
         { name = 'path',     group_index = 2 },
         { name = 'nvim_lsp', group_index = 2 },
@@ -166,11 +163,6 @@ lsp.configure("tsserver", {
 })
 
 lsp.setup()
-
-local cmp_config = lsp.defaults.cmp_config()
-
-cmp_config.window.completion = cmp.config.window.bordered()
-cmp.setup(cmp_config)
 
 vim.diagnostic.config({
     virtual_text = true,
