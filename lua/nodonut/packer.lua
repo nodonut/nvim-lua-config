@@ -45,7 +45,6 @@ return require("packer").startup(function(use)
 
     -- Themes
     use("folke/tokyonight.nvim")
-
     use({ "catppuccin/nvim", as = "catppuccin" })
 
     use('j-hui/fidget.nvim')
