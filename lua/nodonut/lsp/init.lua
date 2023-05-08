@@ -48,12 +48,12 @@ local cmp = require('cmp')
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Space>"] = cmp.mapping.complete(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
 })
 
 -- disable completion with tab
@@ -69,12 +69,12 @@ lsp.setup_nvim_cmp({
             -- Kind icons
             vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
             vim_item.menu = ({
-                    copilot = "[Copilot]",
-                    nvim_lsp = "[LSP]",
-                    luasnip = "[Snippet]",
-                    buffer = "[Buffer]",
-                    path = "[Path]",
-                })[entry.source.name]
+                copilot = "[Copilot]",
+                nvim_lsp = "[LSP]",
+                luasnip = "[Snippet]",
+                buffer = "[Buffer]",
+                path = "[Path]",
+            })[entry.source.name]
             return vim_item
         end,
     },
@@ -181,9 +181,10 @@ local function has_eslint_configured()
         utils.root_has_file(".eslintrc")
 end
 
-local function has_rubocop_configured()
-    return utils.root_has_file(".rubocop.yml")
-end
+-- UNCOMMENT WHEN WORKING WITH RUBY
+-- local function has_rubocop_configured()
+--     return utils.root_has_file(".rubocop.yml")
+-- end
 
 local diagnostics_config = {
     diagnostics_format = "[#{c}] #{m} [#{s}]",
@@ -207,18 +208,13 @@ null_ls.setup({
     end,
     sources = {
         -- Formatters
-        -- formatting.prettier.with({ prefer_local = "node_modules/.bin" }),
-        formatting.rubocop.with({ condition = has_rubocop_configured }),
         formatting.shellharden,
-        formatting.phpcsfixer,
 
         -- Diagnostics
         diagnostics.eslint_d.with({ condition = has_eslint_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.stylelint.with(diagnostics_config),
         diagnostics.shellcheck.with(diagnostics_config),
-        -- diagnostics.rubocop.with({ condition = has_rubocop_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.yamllint,
-        diagnostics.phpcs,
         diagnostics.golangci_lint,
         diagnostics.checkmake,
 
