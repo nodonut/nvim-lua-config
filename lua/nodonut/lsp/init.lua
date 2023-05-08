@@ -213,7 +213,6 @@ null_ls.setup({
         -- Diagnostics
         diagnostics.eslint_d.with({ condition = has_eslint_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.stylelint.with(diagnostics_config),
-        diagnostics.shellcheck.with(diagnostics_config),
         diagnostics.yamllint,
         diagnostics.golangci_lint,
         diagnostics.checkmake,
