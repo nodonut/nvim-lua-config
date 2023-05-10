@@ -11,7 +11,9 @@ return require("packer").startup(function(use)
     })
     use("nvim-treesitter/playground")
     use("romgrk/nvim-treesitter-context")
+
     use("ryanoasis/vim-devicons")
+
     use({ "jose-elias-alvarez/null-ls.nvim" })
 
     use("windwp/nvim-ts-autotag")
@@ -23,7 +25,7 @@ return require("packer").startup(function(use)
         },
     })
 
-    use("vim-test/vim-test")
+    -- use("vim-test/vim-test")
     use("tpope/vim-fugitive")
 
     use({
@@ -40,13 +42,11 @@ return require("packer").startup(function(use)
 
     use("mbbill/undotree")
 
+    use('j-hui/fidget.nvim') -- Standalone UI for nvim-lsp progress. Eye candy for the impatient
+
     use("MunifTanjim/prettier.nvim")
 
-    -- Themes
-    use("folke/tokyonight.nvim")
-    use({ "catppuccin/nvim", as = "catppuccin" })
 
-    use('j-hui/fidget.nvim')
     use {
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -74,10 +74,13 @@ return require("packer").startup(function(use)
             'nvim-telescope/telescope.nvim',
         },
     }
-    use "fladson/vim-kitty"
 
     -- Copilot
     use {
         "zbirenbaum/copilot.lua",
     }
+
+    -- Themes
+    use("folke/tokyonight.nvim") -- TOOOOOKKKKIIIIOOOOOO
+    use({ "catppuccin/nvim", as = "catppuccin" })
 end)

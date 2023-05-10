@@ -207,15 +207,11 @@ null_ls.setup({
         bufcmd(bufnr, 'NullFormat', format_cmd, { bang = true, range = true, desc = 'Format using null-ls' })
     end,
     sources = {
-        -- Formatters
-        formatting.shellharden,
-
         -- Diagnostics
         diagnostics.eslint_d.with({ condition = has_eslint_configured, diagnostics_format = "[#{c}] #{m} [#{s}]" }),
         diagnostics.stylelint.with(diagnostics_config),
         diagnostics.yamllint,
         diagnostics.golangci_lint,
-        diagnostics.checkmake,
 
         -- Code Actions
         code_actions.eslint_d,
