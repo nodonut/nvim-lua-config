@@ -42,7 +42,7 @@ return require("packer").startup(function(use)
 
     use("mbbill/undotree")
 
-    use('j-hui/fidget.nvim') -- Standalone UI for nvim-lsp progress. Eye candy for the impatient
+    use({ 'j-hui/fidget.nvim', tag = "legacy" }) -- Standalone UI for nvim-lsp progress. Eye candy for the impatient
 
     use("MunifTanjim/prettier.nvim")
 
