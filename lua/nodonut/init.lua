@@ -1,5 +1,3 @@
 require("nodonut.set")
-require("nodonut.packer")
-require("nodonut.lsp")
 require("nodonut.keymaps")
 require("nodonut.autorun")
