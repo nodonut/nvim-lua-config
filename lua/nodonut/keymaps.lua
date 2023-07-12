@@ -52,7 +52,8 @@ keymap("n", "<leader>nf", '<cmd>NvimTreeFindFileToggle<cr>')
 -- Prettier keymaps
 keymap("n", "<leader>fo", '<cmd>Prettier<cr>')
 
--- Copilot keymaps
-keymap("n", "<leader>ce", '<cmd>Copilot enable<cr>')
-keymap("n", "<leader>cd", '<cmd>Copilot disable<cr>')
-keymap("n", "<leader>cl", '<cmd>Copilot panel<cr>')
+-- Harpoon keymaps
+keymap("n", "<leader>ha", '<cmd>lua require("harpoon.mark").add_file()<cr>')
+keymap("n", "<leader>ho", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>')
+keymap("n", "<leader>hn", '<cmd>lua require("harpoon.ui").nav_next()<cr>')
+keymap("n", "<leader>hN", '<cmd>lua require("harpoon.ui").nav_prev()<cr>')
