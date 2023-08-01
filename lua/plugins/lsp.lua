@@ -54,15 +54,15 @@ return {
             'cssls',
             'jsonls',
             'gopls',
+            'golangci_lint_ls',
             'yamlls',
             'html',
             'rust_analyzer',
             'bashls',
-            'tailwindcss',
+            'eslint',
         })
 
         local cmp = require('cmp')
-
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
         local cmp_mappings = lsp.defaults.cmp_mappings({
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -127,11 +127,6 @@ return {
                 vim.keymap.set('n', keys, func, opts)
             end
 
-            if client.name == "eslint_d" then
-                vim.cmd.LspStop('eslint_d')
-                return
-            end
-
             if client.server_capabilities.documentFormattingProvider then
                 vim.api.nvim_clear_autocmds({ group = format_augroup, buffer = bufnr })
                 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -179,6 +174,7 @@ return {
         })
         -- (Optional) Configure lua language server for neovim
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+        require('lspconfig').eslint.setup {}
         lsp.setup()
         vim.diagnostic.config({
             virtual_text = true,
