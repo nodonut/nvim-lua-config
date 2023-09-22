@@ -12,7 +12,11 @@ return {
         { 'williamboman/mason-lspconfig.nvim' },
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
         { 'L3MON4D3/LuaSnip' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'rafamadriz/friendly-snippets' }
     },
     config = function()
         local lsp = require('lsp-zero')
@@ -94,11 +98,10 @@ return {
                 end,
             },
             sources = {
-                -- Other Sources
-                { name = 'path',     group_index = 2 },
-                { name = 'nvim_lsp', group_index = 2 },
-                { name = 'buffer',   group_index = 2, keyword_length = 3 },
-                { name = 'luasnip',  group_index = 2, keyword_length = 2 },
+                { name = 'nvim_lsp' },
+                { name = 'path' },
+                { name = 'buffer',  keyword_length = 3 },
+                { name = 'luasnip', keyword_length = 2 },
             }
         })
 
@@ -174,6 +177,7 @@ return {
         -- (Optional) Configure lua language server for neovim
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
         require('lspconfig').eslint.setup {}
+        require('luasnip.loaders.from_vscode').lazy_load()
         lsp.setup()
         vim.diagnostic.config({
             virtual_text = true,
