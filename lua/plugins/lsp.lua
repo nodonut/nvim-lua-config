@@ -57,7 +57,6 @@ return {
             'cssls',
             'jsonls',
             'gopls',
-            'golangci_lint_ls',
             'yamlls',
             'html',
             'rust_analyzer',
@@ -178,6 +177,16 @@ return {
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
         require('lspconfig').eslint.setup {}
         require('luasnip.loaders.from_vscode').lazy_load()
+        require('lspconfig').gopls.setup {
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    gofumpt = true,
+                }
+            }
+        }
         lsp.setup()
         vim.diagnostic.config({
             virtual_text = true,
