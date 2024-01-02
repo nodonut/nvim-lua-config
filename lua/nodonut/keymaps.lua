@@ -58,3 +58,7 @@ keymap("n", "<leader>ho", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr
 keymap("n", "<leader>hn", '<cmd>lua require("harpoon.ui").nav_next()<cr>')
 keymap("n", "<leader>hN", '<cmd>lua require("harpoon.ui").nav_prev()<cr>')
 keymap("n", "<leader>hx", '<cmd>lua require("harpoon.mark").clear_all()<cr>')
+
+-- Git Diff
+keymap("n", "<leader>gj", '<cmd>diffget //3<cr>')
+keymap("n", "<leader>gf", '<cmd>diffget //2<cr>')
