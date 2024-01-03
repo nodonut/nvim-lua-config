@@ -62,3 +62,11 @@ keymap("n", "<leader>hx", '<cmd>lua require("harpoon.mark").clear_all()<cr>')
 -- Git Diff
 keymap("n", "<leader>gj", '<cmd>diffget //3<cr>')
 keymap("n", "<leader>gf", '<cmd>diffget //2<cr>')
+
+-- Trouble
+keymap("n", "<leader>xx", function() require("trouble").toggle() end)
+keymap("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
+keymap("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
+keymap("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
+keymap("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
+keymap("n", "gR", function() require("trouble").toggle("lsp_references") end)
