@@ -32,6 +32,9 @@ keymap('n', '<leader>/', function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
     require('telescope.builtin').current_buffer_fuzzy_find()
 end)
+keymap('n', "<leader>sc", function()
+    require('telescope.builtin').grep_string()
+end)
 
 -- Vim Test keymaps
 keymap("n", "<leader>T", "<cmd>TestFile<cr>")
