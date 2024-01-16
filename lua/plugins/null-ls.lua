@@ -1,5 +1,5 @@
 return {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     dependencies = {
         'nvim-lua/plenary.nvim'
     },
@@ -7,8 +7,16 @@ return {
         local lsp = require("lsp-zero")
         local null_ls = require("null-ls")
         local null_opts = lsp.build_options('null-ls', {})
+        local diagnostics = null_ls.builtins.diagnostics
+        local formatting = null_ls.builtins.formatting
 
         null_ls.setup({
+            sources = {
+                diagnostics.ruff,
+                diagnostics.mypy,
+
+                formatting.black
+            },
             on_attach = function(client, bufnr)
                 null_opts.on_attach(client, bufnr)
 
