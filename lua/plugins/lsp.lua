@@ -153,8 +153,8 @@ return {
             nmap("<leader>ds", require('telescope.builtin').lsp_document_symbols)
             nmap("<leader>ws", require('telescope.builtin').lsp_dynamic_workspace_symbols)
 
-            nmap("[d", vim.diagnostic.goto_next)
-            nmap("]d", vim.diagnostic.goto_prev)
+            nmap("[d", vim.diagnostic.goto_prev)
+            nmap("]d", vim.diagnostic.goto_next)
             nmap("<leader>ca", vim.lsp.buf.code_action)
             nmap("<leader>rn", vim.lsp.buf.rename)
             nmap("<C-h>", vim.lsp.buf.signature_help)
