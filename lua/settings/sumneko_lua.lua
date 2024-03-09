@@ -14,7 +14,16 @@ return {
             diagnostics = {
                 globals = { 'vim' },
             },
-            workspace = { library = vim.api.nvim_get_runtime_file('', true), checkThirdParty = false },
+            workspace = {
+                library = {
+                    '${3rd}/luv/library',
+                    unpack(vim.api.nvim_get_runtime_file('', true)),
+                },
+                checkThirdParty = false
+            },
+            completion = {
+                callSnippet = 'Replace',
+            },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = { enable = false },
         },

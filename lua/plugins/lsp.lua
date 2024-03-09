@@ -144,12 +144,14 @@ return {
                 })
             end
 
-            nmap("gd", vim.lsp.buf.definition)
             nmap("K", vim.lsp.buf.hover)
             nmap("<leader>vws", vim.lsp.buf.workspace_symbol)
             nmap('<leader>e', vim.diagnostic.open_float)
 
+            nmap("gd", require('telescope.builtin').lsp_definitions)
             nmap("gr", require('telescope.builtin').lsp_references)
+            nmap("gI", require('telescope.builtin').lsp_implementations)
+            nmap("<leader>D", require('telescope.builtin').lsp_type_definitions)
             nmap("<leader>ds", require('telescope.builtin').lsp_document_symbols)
             nmap("<leader>ws", require('telescope.builtin').lsp_dynamic_workspace_symbols)
 
