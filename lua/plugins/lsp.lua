@@ -57,6 +57,7 @@ return {
 			"rust_analyzer",
 			"bashls",
 			"eslint",
+			"jedi_language_server",
 		})
 
 		local cmp = require("cmp")
