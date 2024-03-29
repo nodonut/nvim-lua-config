@@ -15,11 +15,12 @@ return {
             markdown = { 'markdownlint' },
             sh = { 'shellcheck' },
             yaml = { 'yamllint' },
+            python = { "ruff" },
         }
 
         vim.api.nvim_create_autocmd({ "BufWritePost" }, {
             callback = function()
-                lint.try_lint(nil, { ignore_errors = true })
+                lint.try_lint(nil)
             end,
         })
     end
