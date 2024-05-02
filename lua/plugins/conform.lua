@@ -24,6 +24,8 @@ return {
 				scss = { { "prettierd", "prettier" } },
 				less = { { "prettierd", "prettier" } },
 				markdown = { { "prettierd", "prettier" } },
+				yaml = { { "prettierd", "prettier" } },
+                sql = { "sql_formatter" },
 
 				go = { "gofmt" },
 			},

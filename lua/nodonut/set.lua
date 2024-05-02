@@ -38,3 +38,6 @@ vim.opt.updatetime = 50
 vim.opt.shortmess:append("c")
 
 vim.g.mapleader = " "
+
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false
