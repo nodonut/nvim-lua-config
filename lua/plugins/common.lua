@@ -6,4 +6,5 @@ return {
 	"mbbill/undotree",
 	-- Themes
 	"folke/tokyonight.nvim", -- TOOOOOKKKKIIIIOOOOOO
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 }

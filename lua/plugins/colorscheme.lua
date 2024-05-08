@@ -1,21 +1,29 @@
 return {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-        require("catppuccin").setup {
-            flavour = "macchiato",
-            transparent_background = true
-        }
+	"catppuccin/nvim",
+	name = "catppuccin",
+	priority = 1000,
+	config = function()
+		require("catppuccin").setup({
+			flavour = "macchiato",
+			transparent_background = true,
+		})
 
-        function ColorMyPencils(color)
-            color = color or "catppuccin"
-            vim.cmd.colorscheme(color)
+		require("tokyonight").setup({
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+		})
 
-            vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-        end
+		function ColorMyPencils(color)
+			color = color or "tokyonight"
+			vim.cmd.colorscheme(color)
 
-        ColorMyPencils()
-    end,
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		end
+
+		ColorMyPencils()
+	end,
 }
