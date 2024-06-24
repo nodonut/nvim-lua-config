@@ -19,13 +19,14 @@ return {
 
 				javascript = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
+				json = { { "prettierd", "prettier" } },
 				typescriptreact = { { "prettierd", "prettier" } },
 				css = { { "prettierd", "prettier" } },
 				scss = { { "prettierd", "prettier" } },
 				less = { { "prettierd", "prettier" } },
 				markdown = { { "prettierd", "prettier" } },
 				yaml = { { "prettierd", "prettier" } },
-                sql = { "sql_formatter" },
+				sql = { "sql_formatter" },
 
 				go = { "gofmt" },
 			},
