@@ -27,7 +27,7 @@ return {
 				markdown = { { "prettierd", "prettier" } },
 				yaml = { { "prettierd", "prettier" } },
 				sql = { "sql_formatter" },
-
+				rust = { "rustfmt" },
 				go = { "gofmt" },
 			},
 		})
