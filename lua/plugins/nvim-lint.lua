@@ -8,10 +8,10 @@ return {
 
 		lint.linters_by_ft = {
 			go = { "golangcilint" },
-			javascript = { "eslint" },
-			javascriptreact = { "eslint" },
-			typescript = { "eslint" },
-			typescriptreact = { "eslint" },
+			javascript = { "eslint", "eslint_d" },
+			javascriptreact = { "eslint", "eslint_d" },
+			typescript = { "eslint", "eslint_d" },
+			typescriptreact = { "eslint", "eslint_d" },
 			markdown = { "markdownlint" },
 			sh = { "shellcheck" },
 			yaml = { "yamllint" },
