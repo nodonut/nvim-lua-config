@@ -6,6 +6,8 @@ return {
 		if not status_ok then
 			return
 		end
+
+		local prettiers = { "prettierd", "prettier", stop_after_first = true }
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -17,15 +19,15 @@ return {
 					end
 				end,
 
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				json = { { "prettierd", "prettier" } },
-				typescriptreact = { { "prettierd", "prettier" } },
-				css = { { "prettierd", "prettier" } },
-				scss = { { "prettierd", "prettier" } },
-				less = { { "prettierd", "prettier" } },
-				markdown = { { "prettierd", "prettier" } },
-				yaml = { { "prettierd", "prettier" } },
+				javascript = prettiers,
+				typescript = prettiers,
+				json = prettiers,
+				typescriptreact = prettiers,
+				css = prettiers,
+				scss = prettiers,
+				less = prettiers,
+				markdown = prettiers,
+				yaml = prettiers,
 				sql = { "sql_formatter" },
 				rust = { "rustfmt" },
 				go = { "gofmt" },
