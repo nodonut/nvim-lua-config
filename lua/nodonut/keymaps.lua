@@ -24,8 +24,15 @@ keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 keymap("n", "<leader>ht", "<cmd>Telescope help_tags<cr>")
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 keymap("n", "<leader>fm", "<cmd>Telescope man_pages<cr>")
+
 keymap("n", "<leader>ga", "<cmd>Telescope git_branches<cr>")
 keymap("n", "<leader>gs", "<cmd>Telescope git_status<cr>")
+keymap("n", "<leader>gc", function()
+	require("telescope.builtin").git_commits({
+		git_command = { "git", "log", "--pretty=oneline", "-n 25", "--abbrev-commit", "--", "." },
+	})
+end)
+
 keymap("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>")
 keymap("n", "<leader>?", "<cmd>Telescope oldfiles<cr>")
 keymap("n", "<leader>/", function()
