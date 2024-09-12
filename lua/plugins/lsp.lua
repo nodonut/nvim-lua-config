@@ -47,7 +47,7 @@ return {
 
 		lsp.preset("recommended")
 		lsp.ensure_installed({
-			"tsserver",
+			"ts_ls",
 			"lua_ls",
 			"cssls",
 			"jsonls",
@@ -140,7 +140,7 @@ return {
 		lsp.configure("rust_analyzer", {
 			cmd = { "rustup", "run", "stable", "rust-analyzer" },
 		})
-		lsp.configure("tsserver", {
+		lsp.configure("ts_ls", {
 			on_init = function(client)
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentFormattingRangeProvider = false
