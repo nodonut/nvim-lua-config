@@ -9,6 +9,7 @@ return {
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-buffer" },
 		{ "hrsh7th/cmp-path" },
+		{ "hrsh7th/cmp-cmdline" },
 		{ "L3MON4D3/LuaSnip" },
 		{ "saadparwaiz1/cmp_luasnip" },
 		{ "rafamadriz/friendly-snippets" },
@@ -43,7 +44,6 @@ return {
 			TypeParameter = "",
 		}
 		local jsonls_opts = require("settings.jsonls")
-		local sumneko_opts = require("settings.sumneko_lua")
 
 		lsp.preset("recommended")
 		lsp.ensure_installed({
@@ -95,8 +95,8 @@ return {
 			sources = {
 				{ name = "path" },
 				{ name = "nvim_lsp" },
-				{ name = "buffer", keyword_length = 3 },
-				{ name = "luasnip", keyword_length = 2 },
+				{ name = "buffer" },
+				{ name = "luasnip" },
 			},
 		})
 

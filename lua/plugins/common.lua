@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/playground",
+	"vrischmann/tree-sitter-templ",
 	"ryanoasis/vim-devicons",
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
