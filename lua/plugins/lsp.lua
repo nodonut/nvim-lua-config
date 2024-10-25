@@ -148,7 +148,6 @@ return {
 		})
 		-- (Optional) Configure lua language server for neovim
 		require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-		require("lspconfig").eslint.setup({})
 		require("lspconfig").htmx.setup({})
 		require("luasnip.loaders.from_vscode").lazy_load()
 		require("lspconfig").gopls.setup({

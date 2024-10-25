@@ -6,12 +6,14 @@ return {
 
 		golangci.args = { "--out-format", "json" }
 
+        local eslinters = { "eslint", "eslint_d" }
+
 		lint.linters_by_ft = {
 			go = { "golangcilint" },
-			javascript = { "eslint", "eslint_d" },
-			javascriptreact = { "eslint", "eslint_d" },
-			typescript = { "eslint", "eslint_d" },
-			typescriptreact = { "eslint", "eslint_d" },
+			javascript = eslinters,
+			javascriptreact = eslinters,
+			typescript = eslinters,
+			typescriptreact = eslinters,
 			markdown = { "markdownlint" },
 			sh = { "shellcheck" },
 			yaml = { "yamllint" },
