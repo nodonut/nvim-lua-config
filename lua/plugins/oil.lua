@@ -7,6 +7,13 @@ return {
 			view_options = {
 				show_hidden = true,
 			},
+			keymaps = {
+				["Y"] = {
+					callback = function()
+						require("oil.actions").yank_entry.callback({ modify = ":p:." })
+					end,
+				},
+			},
 		})
 
 		-- Open parent directory in the current window
