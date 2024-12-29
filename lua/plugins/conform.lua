@@ -7,7 +7,26 @@ return {
 			return
 		end
 
-		local prettiers = { "prettierd", "prettier", stop_after_first = true }
+		local hasPrettier = function()
+			local package_json = vim.fn.findfile("package.json", ".;")
+			if package_json ~= "" then
+				local content = vim.fn.readfile(package_json)
+				local decoded = vim.fn.json_decode(content)
+				local deps = decoded.dependencies or {}
+				local dev_deps = decoded.devDependencies or {}
+
+				return deps.prettier ~= nil or dev_deps.prettier ~= nil
+			end
+		end
+
+		local function apply_soy_formatting()
+			if hasPrettier() then
+				return { "prettierd", "prettier", stop_after_first = true }
+			else
+				return { "eslint_d" }
+			end
+		end
+
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -19,15 +38,15 @@ return {
 					end
 				end,
 
-				javascript = prettiers,
-				typescript = prettiers,
-				json = prettiers,
-				typescriptreact = prettiers,
-				css = prettiers,
-				scss = prettiers,
-				less = prettiers,
-				markdown = prettiers,
-				yaml = prettiers,
+				javascript = apply_soy_formatting,
+				typescript = apply_soy_formatting,
+				json = apply_soy_formatting,
+				typescriptreact = apply_soy_formatting,
+				css = apply_soy_formatting,
+				scss = apply_soy_formatting,
+				less = apply_soy_formatting,
+				markdown = apply_soy_formatting,
+				yaml = apply_soy_formatting,
 				sql = { "sql_formatter" },
 				rust = { "rustfmt" },
 				go = { "gofmt" },
