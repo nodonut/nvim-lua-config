@@ -1,7 +1,8 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	cmd = "TSUpdate",
-	version = "*",
+	-- version = "*",
+	commit = "fb2d41ec599b68af041f3071ada883718928e279",
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
