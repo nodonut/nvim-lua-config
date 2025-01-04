@@ -101,6 +101,7 @@ return {
 		--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+		local jsonls_opts = require("settings.jsonls")
 		local servers = {
 			-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			jedi_language_server = {},
@@ -109,7 +110,7 @@ return {
 			html = {},
 			yamlls = {},
 			cssls = {},
-			jsonls = {},
+			jsonls = jsonls_opts,
 			gopls = {},
 			lua_ls = {
 				-- cmd = { ... },
