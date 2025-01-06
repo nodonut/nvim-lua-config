@@ -9,6 +9,12 @@ return {
 
 		local hasPrettier = function()
 			local package_json = vim.fn.findfile("package.json", ".;")
+			local prettierrc = vim.fn.findfile(".prettierrc", ".;")
+
+			if prettierrc ~= "" then
+				return true
+			end
+
 			if package_json ~= "" then
 				local content = vim.fn.readfile(package_json)
 				local decoded = vim.fn.json_decode(content)
