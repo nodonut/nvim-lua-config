@@ -28,6 +28,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-buffer",
 	},
 	config = function()
 		-- See `:help cmp`
@@ -99,10 +100,10 @@ return {
 					-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
 					group_index = 0,
 				},
-				{ name = "nvim_lsp" },
-				{ name = "path" },
-				{ name = "luasnip" },
-				{ name = "buffer" },
+				{ name = "nvim_lsp", priority = 4 },
+				{ name = "path", priority = 3 },
+				{ name = "luasnip", priority = 2 },
+				{ name = "buffer", priority = 1 },
 			},
 			formatting = {
 				fields = { "kind", "abbr", "menu" },

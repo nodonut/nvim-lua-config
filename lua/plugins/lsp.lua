@@ -104,6 +104,7 @@ return {
 		local jsonls_opts = require("settings.jsonls")
 		local servers = {
 			-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
+			graphql = {},
 			jedi_language_server = {},
 			eslint_d = {},
 			bashls = {},

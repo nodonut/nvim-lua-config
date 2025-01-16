@@ -56,9 +56,6 @@ keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
 -- Copy Relative Path
 keymap("n", "<leader>rl", '<cmd>let @+ = expand("%")<cr>')
 
--- NvimTree keymaps
-keymap("n", "<leader>nf", "<cmd>NvimTreeFindFileToggle<cr>")
-
 -- Prettier keymaps
 keymap("n", "<leader>fo", "<cmd>Prettier<cr>")
 
