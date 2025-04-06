@@ -6,7 +6,24 @@ return {
 
 		golangci.args = { "--out-format", "json" }
 
-        local eslinters = { "eslint", "eslint_d" }
+		local hasEslint = function()
+			local package_json = vim.fn.findfile("package.json", ".;")
+
+			if package_json ~= "" then
+				local content = vim.fn.readfile(package_json)
+				local decoded = vim.fn.json_decode(content)
+				local deps = decoded.dependencies or {}
+				local dev_deps = decoded.devDependencies or {}
+
+				return deps.eslint ~= nil or dev_deps.eslint ~= nil
+			end
+		end
+
+		local eslinters = { "eslint", "eslint_d" }
+
+		if hasEslint() then
+			eslinters = { "eslint" }
+		end
 
 		lint.linters_by_ft = {
 			go = { "golangcilint" },
