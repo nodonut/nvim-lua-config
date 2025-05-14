@@ -27,7 +27,7 @@ return {
 
 		local function apply_soy_formatting()
 			if hasPrettier() then
-				return { "prettierd", "prettier", stop_after_first = true }
+				return { "prettierd", "prettier" }
 			else
 				return { "eslint_d" }
 			end
@@ -53,9 +53,10 @@ return {
 				less = apply_soy_formatting,
 				markdown = apply_soy_formatting,
 				yaml = apply_soy_formatting,
-				sql = { "sql_formatter" },
+				-- sql = { "sql_formatter" },
 				rust = { "rustfmt" },
 				go = { "gofmt" },
+				ruby = { "rubocop" },
 			},
 		})
 
