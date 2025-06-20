@@ -2,9 +2,6 @@ return {
 	"mfussenegger/nvim-lint",
 	config = function()
 		local lint = require("lint")
-		local golangci = lint.linters.golangcilint
-
-		golangci.args = { "--out-format", "json" }
 
 		local hasEslint = function()
 			local package_json = vim.fn.findfile("package.json", ".;")
