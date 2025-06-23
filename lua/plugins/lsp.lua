@@ -9,7 +9,6 @@ return {
 		{ "j-hui/fidget.nvim", opts = {} },
 
 		"saghen/blink.cmp",
-		"folke/neodev.nvim",
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -153,7 +152,6 @@ return {
 			},
 		}
 
-		require("neodev").setup()
 		require("mason").setup()
 		-- You can add other tools here that you want Mason to install
 		-- for you, so that they are available from within Neovim.
