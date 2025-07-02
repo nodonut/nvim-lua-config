@@ -58,6 +58,22 @@ return {
 				go = { "gofmt" },
 				ruby = { "rubocop" },
 			},
+			formatters = {
+				rubocop = {
+					command = "bundle",
+					args = {
+						"exec",
+						"rubocop",
+						"--server",
+						"-a",
+						"-f",
+						"quiet",
+						"--stderr",
+						"--stdin",
+						"$FILENAME",
+					},
+				},
+			},
 		})
 
 		vim.api.nvim_create_autocmd("BufWritePre", {

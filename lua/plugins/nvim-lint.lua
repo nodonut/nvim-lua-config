@@ -2,6 +2,8 @@ return {
 	"mfussenegger/nvim-lint",
 	config = function()
 		local lint = require("lint")
+		local rubocop = lint.linters.rubocop
+		rubocop.cmd = "bundle exec rubocop"
 
 		local hasEslint = function()
 			local package_json = vim.fn.findfile("package.json", ".;")
@@ -33,10 +35,22 @@ return {
 			yaml = { "yamllint" },
 			python = { "ruff" },
 			sql = { "sqlfluff" },
+			ruby = { "rubocop" },
 		}
 
 		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-			pattern = { "*.go", "*.js", "*.jsx", "*.ts", "*.tsx", "*.md", "*.sh", "*.yaml", "*.py" },
+			pattern = {
+				"*.go",
+				"*.js",
+				"*.jsx",
+				"*.ts",
+				"*.tsx",
+				"*.md",
+				"*.sh",
+				"*.yaml",
+				"*.py",
+				".rb",
+			},
 			callback = function()
 				lint.try_lint(nil)
 			end,

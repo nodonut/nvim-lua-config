@@ -137,6 +137,7 @@ return {
 			cssls = {},
 			jsonls = jsonls_opts,
 			gopls = {},
+			ruby_lsp = {},
 			lua_ls = {
 				-- cmd = { ... },
 				-- filetypes = { ... },
