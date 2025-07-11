@@ -93,8 +93,9 @@ return { -- Autocompletion
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev" },
+			default = { "lsp", "path", "snippets", "lazydev", "buffer" },
 			providers = {
+				snippets = { min_keyword_length = 3 },
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 			},
 		},

@@ -6,8 +6,8 @@ return {
 			ensure_installed = {
 				"tsx",
 				"lua",
-				"rust",
 				"go",
+				"html",
 				"css",
 				"json",
 				"typescript",
