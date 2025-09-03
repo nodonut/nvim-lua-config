@@ -145,6 +145,9 @@ return {
 				-- capabilities = {},
 				settings = {
 					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
 						workspace = { checkThirdParty = false },
 						telemetry = { enable = false },
 						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings

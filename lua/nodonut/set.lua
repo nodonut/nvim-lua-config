@@ -38,6 +38,7 @@ vim.opt.updatetime = 50
 vim.opt.shortmess:append("c")
 
 vim.g.mapleader = " "
+vim.g.have_nerd_font = true
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
@@ -49,3 +50,14 @@ vim.opt.winborder = "rounded"
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Preview substitutions live, as you type!
+vim.o.inccommand = "split"
+
+-- Show which line your cursor is on
+vim.o.cursorline = true
+
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s)
+-- See `:help 'confirm'`
+vim.o.confirm = true
