@@ -2,6 +2,7 @@ return {
 	"pmizio/typescript-tools.nvim",
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	opts = {},
+	ft = { "ts", "tsx" },
 	config = function()
 		require("typescript-tools").setup({
 			on_attach = function(client)
