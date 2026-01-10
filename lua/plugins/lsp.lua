@@ -138,7 +138,7 @@ return {
 			cssls = {},
 			jsonls = jsonls_opts,
 			gopls = {},
-			ruby_lsp = {},
+			postgres_lsp = {},
 			lua_ls = {
 				-- cmd = { ... },
 				-- filetypes = { ... },
@@ -156,6 +156,10 @@ return {
 				},
 			},
 		}
+
+		if vim.fn.executable("ruby") == 1 then
+			servers.ruby_lsp = {}
+		end
 
 		require("mason").setup()
 		-- You can add other tools here that you want Mason to install

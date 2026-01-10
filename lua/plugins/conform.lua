@@ -53,10 +53,10 @@ return {
 				less = apply_soy_formatting,
 				markdown = apply_soy_formatting,
 				yaml = apply_soy_formatting,
-				-- sql = { "sql_formatter" },
-				rust = { "rustfmt" },
+				sql = { "sqruff" },
 				go = { "gofmt" },
 				ruby = { "rubocop" },
+				sh = { "shfmt" },
 			},
 			formatters = {
 				rubocop = {
