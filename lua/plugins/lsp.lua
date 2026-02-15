@@ -19,19 +19,14 @@ return {
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 				end
 
-				map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-				map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-				map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-				map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+				map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+				map("gra", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+				map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 				map("<leader>sh", vim.lsp.buf.signature_help, "[S]ignature [H]elp")
 				map("gl", vim.diagnostic.open_float, "[S]how [D]iagnostic float")
 				-- WARN: This is not Goto Definition, this is Goto Declaration.
 				--  For example, in C this would take you to the header.
-				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				map("<leader>q", vim.diagnostic.setloclist, "Open diagnostic [Q]uickfix list")
 
 				-- The following two autocommands are used to highlight references of the
 				-- word under your cursor when your cursor rests there for a little while.
@@ -75,15 +70,16 @@ return {
 		})
 
 		-- Change diagnostic symbols in the sign column (gutter)
-		-- if vim.g.have_nerd_font then
-		--   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-		--   local diagnostic_signs = {}
-		--   for type, icon in pairs(signs) do
-		--     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-		--   end
-		--   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-		-- end
+		if vim.g.have_nerd_font then
+			local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+			local diagnostic_signs = {}
+			for type, icon in pairs(signs) do
+				diagnostic_signs[vim.diagnostic.severity[type]] = icon
+			end
+			vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+		end
 		vim.diagnostic.config({
+			update_in_insert = false,
 			severity_sort = true,
 			float = { border = "rounded", source = "if_many" },
 			underline = { severity = vim.diagnostic.severity.ERROR },
@@ -108,6 +104,7 @@ return {
 					return diagnostic_message[diagnostic.severity]
 				end,
 			},
+			jump = { float = true },
 		})
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
@@ -139,22 +136,6 @@ return {
 			jsonls = jsonls_opts,
 			gopls = {},
 			postgres_lsp = {},
-			lua_ls = {
-				-- cmd = { ... },
-				-- filetypes = { ... },
-				-- capabilities = {},
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
-						workspace = { checkThirdParty = false },
-						telemetry = { enable = false },
-						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						diagnostics = { disable = { "missing-fields" } },
-					},
-				},
-			},
 		}
 
 		if vim.fn.executable("ruby") == 1 then
@@ -166,6 +147,7 @@ return {
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			"lua_ls", -- Lua Language server
 			"stylua", -- Used to format Lua code
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -178,8 +160,48 @@ return {
 					-- certain features of an LSP (for example, turning off formatting for ts_ls)
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 					vim.lsp.config(server_name, server)
+					vim.lsp.enable(server_name)
 				end,
 			},
 		})
+
+		-- Special Lua Config, as recommended by neovim help docs
+		vim.lsp.config("lua_ls", {
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+					if
+						path ~= vim.fn.stdpath("config")
+						and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+					then
+						return
+					end
+				end
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						version = "LuaJIT",
+						path = { "lua/?.lua", "lua/?/init.lua" },
+					},
+					workspace = {
+						checkThirdParty = false,
+						-- NOTE: this is a lot slower and will cause issues when working on your own configuration.
+						--  See https://github.com/neovim/nvim-lspconfig/issues/3189
+						library = vim.api.nvim_get_runtime_file("", true),
+					},
+				})
+			end,
+			settings = {
+				Lua = {
+					completion = {
+						callSnippet = "Replace",
+					},
+					telemetry = { enable = false },
+					-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+					diagnostics = { disable = { "missing-fields" } },
+				},
+			},
+		})
+		vim.lsp.enable("lua_ls")
 	end,
 }
