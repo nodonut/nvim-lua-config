@@ -49,7 +49,7 @@ return {
 				"*.sh",
 				"*.yaml",
 				"*.py",
-				".rb",
+				"*.rb",
 			},
 			callback = function()
 				lint.try_lint(nil)
