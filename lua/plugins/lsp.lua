@@ -140,6 +140,12 @@ return {
 
 		if vim.fn.executable("ruby") == 1 then
 			servers.ruby_lsp = {}
+			servers.sorbet = {
+				cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
+			}
+			servers.rubocop = {
+				cmd = { "bundle", "exec", "rubocop", "--lsp" },
+			}
 		end
 
 		require("mason").setup()
